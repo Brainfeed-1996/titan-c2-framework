@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #0d0d0d;
+  color: #00ff41;
+}
+
+.App-header {
+  background-color: #1a1a1a;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 2px solid #00ff41;
+}
+
+.container {
+  display: flex;
+  height: calc(100vh - 100px);
+}
+
+.sidebar {
+  width: 300px;
+  border-right: 1px solid #333;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid #333;
+  margin-bottom: 5px;
+}
+
+.sidebar li:hover, .sidebar li.active {
+  background-color: #003300;
+  border-color: #00ff41;
+}
+
+.main {
+  flex: 1;
+  padding: 40px;
+}
+
+input {
+  width: 70%;
+  padding: 10px;
+  background: #000;
+  border: 1px solid #00ff41;
+  color: #00ff41;
+  font-family: inherit;
+}
+
+button {
+  padding: 10px 20px;
+  background: #00ff41;
+  color: #000;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #00cc33;
+}
+
+.status.active {
+  color: #00ff41;
+}

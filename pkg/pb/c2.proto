@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "github.com/user/titan-c2-framework/pkg/pb";
+
+service C2Service {
+  rpc Register(RegisterRequest) returns (RegisterResponse) {}
+  rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse) {}
+  rpc SubmitResult(CommandResult) returns (Ack) {}
+  rpc GetJobs(Empty) returns (JobList) {}
+}
+
+message Empty {}
+
+message Ack {
+  bool success = 1;
+}
+
+message RegisterRequest {
+  string hostname = 1;
+  string os = 2;
+  string arch = 3;
+  string ip = 4;
+}
+
+message RegisterResponse {
+  string agent_id = 1;
+  string status = 2;
+}
+
+message HeartbeatRequest {
+  string agent_id = 1;
+}
+
+message HeartbeatResponse {
+  repeated Command commands = 1;
+}
+
+message Command {
+  string command_id = 1;
+  string type = 2; // "shell", "download", "upload"
+  string payload = 3;
+}
+
+message CommandResult {
+  string agent_id = 1;
+  string command_id = 2;
+  string output = 3;
+  string error = 4;
+}
+
+message JobList {
+    repeated Command commands = 1;
+}

@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package rpc;
+
+option go_package = "github.com/titan-c2/framework/pkg/rpc";
+
+service TitanC2 {
+  // Agent Heartbeat
+  rpc Heartbeat (HeartbeatRequest) returns (HeartbeatResponse);
+  
+  // Job Fetching
+  rpc GetJobs (JobRequest) returns (JobResponse);
+  
+  // Job Output Submission
+  rpc SubmitOutput (OutputRequest) returns (OutputResponse);
+}
+
+message HeartbeatRequest {
+  string agent_id = 1;
+  string hostname = 2;
+  string platform = 3;
+  string architecture = 4;
+  int64 timestamp = 5;
+  string integrity_hash = 6;
+}
+
+message HeartbeatResponse {
+  bool has_jobs = 1;
+  int64 server_time = 2;
+  string status = 3;
+}
+
+message JobRequest {
+  string agent_id = 1;
+}
+
+message JobResponse {
+  repeated Job jobs = 1;
+}
+
+message Job {
+  string job_id = 1;
+  string type = 2; // "shell", "upload", "download", "exec"
+  bytes payload = 3;
+  repeated string args = 4;
+}
+
+message OutputRequest {
+  string job_id = 1;
+  string agent_id = 2;
+  bytes output = 3;
+  string error = 4;
+  int32 exit_code = 5;
+}
+
+message OutputResponse {
+  bool received = 1;
+}
