@@ -86,6 +86,14 @@ This tool is created for **authorized Red Team engagements and educational purpo
 
 Contributions are welcome. Please ensure all pull requests pass the linter and include relevant tests.
 
+## 🗺 Roadmap
+
+- [x] **Phase 1**: Core C2 architecture with gRPC.
+- [x] **Phase 2**: Secure transport layer (mTLS + AES-GCM) and rate-limiting.
+- [ ] **Phase 3**: Steganographic listener endpoints.
+- [ ] **Phase 4**: Decentralized peer-to-peer relay system.
+- [ ] **Phase 5**: Multi-tenant UI with RBAC.
+
 ## 📄 License
 
 MIT
